@@ -1,8 +1,11 @@
 var video;
+var rangeslider = document.getElementById("volumeSlider"); 
+var output = document.getElementById("volume"); 
 
 document.getElementById("play").onclick = function(){
+	
     if (document.getElementById("myVideo").paused){
-        document.getElementById("myVideo").play();
+		document.getElementById("myVideo").play();
     } 
 }
 
@@ -12,6 +15,7 @@ window.addEventListener("load", function() {
 
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
+	document.getElementById("volume").innerHTML = 100 + "%";
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
@@ -52,15 +56,16 @@ document.querySelector("#mute").addEventListener("click", function() {
     }
 });
 
-var rangeslider = document.getElementById("volumeSlider"); 
-var output = document.getElementById("volume"); 
-output.innerHTML = rangeslider.value; 
+
+
 
   
 rangeslider.oninput = function() { 
 var vid = document.getElementById("myVideo");
-  output.innerHTML = this.value;
-  vid.volume = this.value / 100; 
+  
+  vid.volume = this.value / 100;
+  output.innerHTML = vid.volume * 100 + "%";
+  console.log(vid.volume) 
   
 } 
 
